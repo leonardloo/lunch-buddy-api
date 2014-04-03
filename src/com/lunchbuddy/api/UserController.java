@@ -8,13 +8,14 @@ import com.google.api.server.spi.config.ApiMethod.HttpMethod;
 import com.google.api.server.spi.config.Named;
 import com.google.appengine.api.datastore.Key;
 import com.google.appengine.api.datastore.KeyFactory;
-import com.lunchbuddy.models.LBUser;
+
+import com.lunchbuddy.models.User;
 
 @Api(name = "lunchbuddy", version = "v1")
 public class UserController {
 
 	@ApiMethod(name = "users.create", path = "users/create", httpMethod = HttpMethod.POST)
-	public LBUser createUser(LBUser user) {
+	public User createUser(User user) {
 		PersistenceManager pm = getPersistenceManager();
 		pm.makePersistent(user);
 		pm.close();
@@ -22,11 +23,11 @@ public class UserController {
 	}
 	
 	@ApiMethod(name = "users.get", path = "users/get/{id}", httpMethod = HttpMethod.GET)
-	public LBUser getUser(@Named("id") String id) {
+	public User getUser(@Named("id") String id) {
 		PersistenceManager pm = getPersistenceManager();
 		//TODO: implement
-		Key k = KeyFactory.createKey(LBUser.class.getSimpleName(), id);
-		LBUser user = pm.getObjectById(LBUser.class, k);
+		Key k = KeyFactory.createKey(User.class.getSimpleName(), id);
+		User user = pm.getObjectById(User.class, k);
 		return user;
 	}
 
@@ -37,7 +38,7 @@ public class UserController {
 	}
 	
 	@ApiMethod(name = "users.update", path = "users/update/{id}", httpMethod = HttpMethod.PUT)
-	public void updateUser(@Named("id") String id, LBUser user) {
+	public void updateUser(@Named("id") String id, User user) {
 		PersistenceManager pm = getPersistenceManager();
 		//TODO: implement 
 	}

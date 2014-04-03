@@ -1,12 +1,12 @@
 {
   "extends" : "thirdParty.api",
   "abstract" : false,
-  "root" : "https://electric-wave-539.appspot.com/_ah/api",
+  "root" : "https://formal-cascade-539.appspot.com/_ah/api",
   "name" : "lunchbuddy",
   "version" : "v1",
   "defaultVersion" : false,
   "adapter" : {
-    "bns" : "https://electric-wave-539.appspot.com/_ah/spi",
+    "bns" : "https://formal-cascade-539.appspot.com/_ah/spi",
     "deadline" : 65.0,
     "type" : "lily"
   },
@@ -46,6 +46,22 @@
         "body" : "empty"
       }
     },
+    "lunchbuddy.users.create" : {
+      "path" : "users/create",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.api.UserController.createUser",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "lunchbuddy.users.removeUser" : {
       "path" : "users/delete/{id}",
       "httpMethod" : "DELETE",
@@ -65,22 +81,6 @@
       },
       "response" : {
         "body" : "empty"
-      }
-    },
-    "lunchbuddy.users.create" : {
-      "path" : "users/create",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.lunchbuddy.api.UserController.createUser",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
       }
     },
     "lunchbuddy.users.get" : {
@@ -146,22 +146,6 @@
         "body" : "empty"
       }
     },
-    "lunchbuddy.requests.create" : {
-      "path" : "requests/create",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.lunchbuddy.api.RequestController.createRequest",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
     "lunchbuddy.requests.get" : {
       "path" : "requests/get/{id}",
       "httpMethod" : "GET",
@@ -182,25 +166,37 @@
       "response" : {
         "body" : "empty"
       }
+    },
+    "lunchbuddy.requests.create" : {
+      "path" : "requests/create",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.api.RequestController.createRequest",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
     }
   },
   "descriptor" : {
     "schemas" : {
-      "LBUser" : {
-        "id" : "LBUser",
+      "User" : {
+        "id" : "User",
         "type" : "object",
         "properties" : {
-          "id" : {
-            "type" : "string",
-            "format" : "int64"
+          "eduEmail" : {
+            "type" : "string"
           },
           "fbId" : {
             "type" : "string"
           },
           "privateEmail" : {
-            "type" : "string"
-          },
-          "eduEmail" : {
             "type" : "string"
           },
           "name" : {
@@ -215,8 +211,11 @@
         "id" : "Request",
         "type" : "object",
         "properties" : {
-          "userId" : {
-            "type" : "string"
+          "key" : {
+            "$ref" : "Key"
+          },
+          "user" : {
+            "$ref" : "User"
           },
           "interval" : {
             "$ref" : "TimeInterval"
@@ -232,9 +231,34 @@
           },
           "lon" : {
             "type" : "number"
-          },
-          "requestId" : {
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
             "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "namespace" : {
+            "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
           }
         }
       },
@@ -260,27 +284,29 @@
     "methods" : {
       "com.lunchbuddy.api.UserController.updateUser" : {
         "request" : {
-          "$ref" : "LBUser"
+          "$ref" : "User"
+        }
+      },
+      "com.lunchbuddy.api.UserController.createUser" : {
+        "request" : {
+          "$ref" : "User"
+        },
+        "response" : {
+          "$ref" : "User"
         }
       },
       "com.lunchbuddy.api.UserController.deleteUser" : {
       },
-      "com.lunchbuddy.api.UserController.createUser" : {
-        "request" : {
-          "$ref" : "LBUser"
-        },
-        "response" : {
-          "$ref" : "LBUser"
-        }
-      },
       "com.lunchbuddy.api.UserController.getUser" : {
         "response" : {
-          "$ref" : "LBUser"
+          "$ref" : "User"
         }
       },
       "com.lunchbuddy.api.RequestController.deleteRequest" : {
       },
       "com.lunchbuddy.api.RequestController.updateRequest" : {
+      },
+      "com.lunchbuddy.api.RequestController.getRequest" : {
       },
       "com.lunchbuddy.api.RequestController.createRequest" : {
         "request" : {
@@ -289,8 +315,6 @@
         "response" : {
           "$ref" : "Request"
         }
-      },
-      "com.lunchbuddy.api.RequestController.getRequest" : {
       }
     }
   }

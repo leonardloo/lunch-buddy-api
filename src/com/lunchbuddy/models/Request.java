@@ -4,21 +4,23 @@ import java.util.List;
 
 import javax.jdo.annotations.Extension;
 import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+import com.google.appengine.api.datastore.Key;
+
+@PersistenceCapable
 public class Request {
 
+	//child class must have a key field whose type can contain the parent key information: either a Key, or a Key value encoded as a string
+	// since request is a child class of parent, it needs to have a KEY
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
-	private String id;
+	private Key key;
 
 	@Persistent
-	private String userId;
+	private User user;
 
 	@Persistent
 	// user selected time interval for lunch date request
@@ -38,20 +40,21 @@ public class Request {
 	// TODO: constructor with desired init parameters
 
 	// Getters & Setters
-	public String getUserId() {
-		return userId;
+
+	public Key getKey() {
+		return this.key;
 	}
 
-	public void setUserId(String userId) {
-		this.userId = userId;
+	public void setKey(Key key) {
+		this.key = key;
 	}
 
-	public String getRequestId() {
-		return id;
+	public User getUser() {
+		return user;
 	}
 
-	public void setRequestId(String requestId) {
-		this.id = requestId;
+	public void setUser(User user) {
+		this.user = user;
 	}
 
 	public TimeInterval getInterval() {

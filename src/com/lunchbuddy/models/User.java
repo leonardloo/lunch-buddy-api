@@ -1,41 +1,30 @@
 package com.lunchbuddy.models;
 
-import javax.jdo.annotations.Extension;
+import java.util.List;
+
 import javax.jdo.annotations.IdGeneratorStrategy;
-import javax.jdo.annotations.IdentityType;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
-
-@PersistenceCapable(identityType = IdentityType.APPLICATION)
+@PersistenceCapable
 public class User {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
-	@Extension(vendorName = "datanucleus", key = "gae.encoded-pk", value = "true")
-	private String id;
+	private String eduEmail;
 	
+	@Persistent(mappedBy = "user")
+    private List<Request> requests;
+
 	@Persistent
 	private String fbId;
 	@Persistent
 	private String privateEmail;
-	@Persistent
-	private String eduEmail;
+
 	@Persistent
 	private String name;
 	@Persistent
 	private String gender;
-
-	// TODO: constructor with desired init parameters
-
-	// Getters & Setters
-	public String getId() {
-		return id;
-	}
-
-	public void setId(String id) {
-		this.id = id;
-	}
 
 	public String getFbId() {
 		return fbId;
@@ -78,4 +67,3 @@ public class User {
 	}
 
 }
-
