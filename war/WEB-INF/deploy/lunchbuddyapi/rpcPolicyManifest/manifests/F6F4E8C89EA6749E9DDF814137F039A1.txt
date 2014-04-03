@@ -1,0 +1,2 @@
+serviceClass: com.lunchbuddy.client.GreetingService
+path: EAB6F7C2279FC0888A629EE514A70BFC.gwt.rpc

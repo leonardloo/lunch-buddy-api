@@ -1,0 +1,3 @@
+# Module lunchbuddyapi
+# RPC service class, partial path of RPC policy file
+com.lunchbuddy.client.GreetingService, EAB6F7C2279FC0888A629EE514A70BFC.gwt.rpc
