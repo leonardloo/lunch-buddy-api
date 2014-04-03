@@ -1,0 +1,273 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://formal-cascade-539.appspot.com/_ah/api",
+  "name" : "requestendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://formal-cascade-539.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "lunchbuddy.com",
+  "ownerName" : "lunchbuddy.com",
+  "packagePath" : "models",
+  "methods" : {
+    "requestendpoint.listRequest" : {
+      "path" : "request",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.models.RequestEndpoint.listRequest",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "requestendpoint.removeRequest" : {
+      "path" : "request/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.models.RequestEndpoint.removeRequest",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "requestendpoint.insertRequest" : {
+      "path" : "request",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.models.RequestEndpoint.insertRequest",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "requestendpoint.getRequest" : {
+      "path" : "request/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.models.RequestEndpoint.getRequest",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "int64",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "requestendpoint.updateRequest" : {
+      "path" : "request",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.models.RequestEndpoint.updateRequest",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_Request" : {
+        "id" : "CollectionResponse_Request",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "Request"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "Request" : {
+        "id" : "Request",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "$ref" : "Key"
+          },
+          "user" : {
+            "$ref" : "User"
+          },
+          "interval" : {
+            "$ref" : "TimeInterval"
+          },
+          "restaurantPreferences" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "lat" : {
+            "type" : "number"
+          },
+          "lon" : {
+            "type" : "number"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "namespace" : {
+            "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
+          }
+        }
+      },
+      "User" : {
+        "id" : "User",
+        "type" : "object",
+        "properties" : {
+          "eduEmail" : {
+            "type" : "string"
+          },
+          "fbId" : {
+            "type" : "string"
+          },
+          "privateEmail" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "gender" : {
+            "type" : "string"
+          }
+        }
+      },
+      "TimeInterval" : {
+        "id" : "TimeInterval",
+        "type" : "object",
+        "properties" : {
+          "startTime" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "endTime" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "length" : {
+            "type" : "string",
+            "format" : "int64"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.lunchbuddy.models.RequestEndpoint.listRequest" : {
+        "response" : {
+          "$ref" : "CollectionResponse_Request"
+        }
+      },
+      "com.lunchbuddy.models.RequestEndpoint.removeRequest" : {
+      },
+      "com.lunchbuddy.models.RequestEndpoint.insertRequest" : {
+        "request" : {
+          "$ref" : "Request"
+        },
+        "response" : {
+          "$ref" : "Request"
+        }
+      },
+      "com.lunchbuddy.models.RequestEndpoint.getRequest" : {
+        "response" : {
+          "$ref" : "Request"
+        }
+      },
+      "com.lunchbuddy.models.RequestEndpoint.updateRequest" : {
+        "request" : {
+          "$ref" : "Request"
+        },
+        "response" : {
+          "$ref" : "Request"
+        }
+      }
+    }
+  }
+}
