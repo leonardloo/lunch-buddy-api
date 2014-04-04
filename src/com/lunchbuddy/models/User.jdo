@@ -10,7 +10,7 @@
                   name="eduEmail"
                   persistence-modifier="persistent"/>
             <field
-                  name="requests"
+                  name="request"
                   persistence-modifier="persistent"/>
             <field
                   name="fbId"

@@ -146,6 +146,22 @@
         "body" : "empty"
       }
     },
+    "lunchbuddy.requests.create" : {
+      "path" : "requests/create",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.api.RequestController.createRequest",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
     "lunchbuddy.requests.get" : {
       "path" : "requests/get/{id}",
       "httpMethod" : "GET",
@@ -165,22 +181,6 @@
       },
       "response" : {
         "body" : "empty"
-      }
-    },
-    "lunchbuddy.requests.create" : {
-      "path" : "requests/create",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.lunchbuddy.api.RequestController.createRequest",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
       }
     }
   },
@@ -251,14 +251,14 @@
           "name" : {
             "type" : "string"
           },
+          "complete" : {
+            "type" : "boolean"
+          },
           "parent" : {
             "$ref" : "Key"
           },
           "namespace" : {
             "type" : "string"
-          },
-          "complete" : {
-            "type" : "boolean"
           }
         }
       },
@@ -306,8 +306,6 @@
       },
       "com.lunchbuddy.api.RequestController.updateRequest" : {
       },
-      "com.lunchbuddy.api.RequestController.getRequest" : {
-      },
       "com.lunchbuddy.api.RequestController.createRequest" : {
         "request" : {
           "$ref" : "Request"
@@ -315,6 +313,8 @@
         "response" : {
           "$ref" : "Request"
         }
+      },
+      "com.lunchbuddy.api.RequestController.getRequest" : {
       }
     }
   }

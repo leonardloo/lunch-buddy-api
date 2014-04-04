@@ -39,4 +39,61 @@ public class TimeIntervalTest {
 		assertEquals(2, t3.msOverlap(t4));
 	}
 
+
+	@Test
+	public void testOverlapIntervalPartial() {
+		/*
+		System.out.println(t1.getStartTime().toString());
+		System.out.println(t1.getEndTime().toString());
+		System.out.println(t2.getStartTime().toString());
+		System.out.println(t2.getEndTime().toString());
+		*/
+
+		TimeInterval t1t2 = t1.overlapInterval(t2);
+		TimeInterval t2t1 = t2.overlapInterval(t1);
+
+		/*
+		System.out.println(t1t2.getStartTime().toString());
+		System.out.println(t1t2.getEndTime().toString());
+		
+		System.out.println(new TimeInterval(new Date(5), new Date(10)).getStartTime());
+		System.out.println(new TimeInterval(new Date(5), new Date(10)).getEndTime());
+		*/
+
+
+		assertEquals(t1t2.getStartTime(), new TimeInterval(new Date(5), new Date(10)).getStartTime() );
+		assertEquals(t1t2.getEndTime(), new TimeInterval(new Date(5), new Date(10)).getEndTime() );
+
+		assertEquals(t2t1.getStartTime(), new TimeInterval(new Date(5), new Date(10)).getStartTime() );
+		assertEquals(t2t1.getEndTime(), new TimeInterval(new Date(5), new Date(10)).getEndTime() );
+
+	}
+
+
+	@Test
+	public void testOverlapIntervalTotal() {
+
+
+		TimeInterval t3t4 = t3.overlapInterval(t4);
+		TimeInterval t4t3 = t4.overlapInterval(t3);
+
+		assertEquals(t3t4.getStartTime(), new TimeInterval(new Date(17), new Date(19)).getStartTime() );
+		assertEquals(t4t3.getEndTime(), new TimeInterval(new Date(17), new Date(19)).getEndTime() );
+
+	}
+
+
+
+	@Test
+	public void testOverlapIntervalNull() {
+
+
+		TimeInterval t1t3 = t1.overlapInterval(t3);
+		TimeInterval t3t1 = t3.overlapInterval(t1);
+
+
+		assertEquals(t1t3,null );
+		assertEquals(t3t1,null );			
+	}
+
 }

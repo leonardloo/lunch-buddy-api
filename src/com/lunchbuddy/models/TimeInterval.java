@@ -70,11 +70,40 @@ public class TimeInterval {
 		}
 		return 0;
 	}
-	
+
 	//overlap method returning a TimeInterval object
 	public TimeInterval overlapInterval(TimeInterval otherInterval){
-		//TODO: implement
-		return null;
+
+
+		Date currentStart, currentEnd;
+
+		if(this.startTime.compareTo(otherInterval.startTime) >=0 )
+		{
+			currentStart = this.startTime;
+		}
+		else
+		{
+			currentStart = otherInterval.startTime;
+		}
+
+		if(this.endTime.compareTo(otherInterval.endTime) <=0 )
+		{
+			currentEnd = this.endTime;
+		}
+		else
+		{
+			currentEnd = otherInterval.endTime;
+		}
+
+
+		if(currentStart.compareTo(currentEnd) < 0)
+		{
+			return new TimeInterval (currentStart, currentEnd);
+		}
+		else
+		{
+			return null;
+		}
 	}
 
 }

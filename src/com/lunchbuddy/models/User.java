@@ -1,7 +1,5 @@
 package com.lunchbuddy.models;
 
-import java.util.List;
-
 import javax.jdo.annotations.IdGeneratorStrategy;
 import javax.jdo.annotations.PersistenceCapable;
 import javax.jdo.annotations.Persistent;
@@ -13,8 +11,8 @@ public class User {
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private String eduEmail;
 	
-	@Persistent(mappedBy = "user")
-    private List<Request> requests;
+	@Persistent(defaultFetchGroup = "true")
+    private Request request;
 
 	@Persistent
 	private String fbId;

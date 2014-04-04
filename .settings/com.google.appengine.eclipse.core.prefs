@@ -6,4 +6,4 @@ gaeHrdEnabled=true
 gaeLaunchAppInBrowser=true
 googleCloudSqlEnabled=false
 localDevMySqlEnabled=true
-ormEnhancementInclusions=src/com/lunchbuddy/models/User.java
+ormEnhancementInclusions=src/com/lunchbuddy/models/User.java|src/com/lunchbuddy/models/Request.java
