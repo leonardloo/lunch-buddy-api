@@ -1,0 +1,200 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://formal-cascade-539.appspot.com/_ah/api",
+  "name" : "lunchuserendpoint",
+  "version" : "v1",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://formal-cascade-539.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "ownerDomain" : "lunchbuddy.com",
+  "ownerName" : "lunchbuddy.com",
+  "packagePath" : "models",
+  "methods" : {
+    "lunchuserendpoint.removeLunchUser" : {
+      "path" : "lunchuser/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.models.LunchUserEndpoint.removeLunchUser",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "lunchuserendpoint.listLunchUser" : {
+      "path" : "lunchuser",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.models.LunchUserEndpoint.listLunchUser",
+      "request" : {
+        "parameters" : {
+          "cursor" : {
+            "type" : "string",
+            "required" : false
+          },
+          "limit" : {
+            "type" : "int32",
+            "required" : false
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "lunchuserendpoint.getLunchUser" : {
+      "path" : "lunchuser/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.models.LunchUserEndpoint.getLunchUser",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "lunchuserendpoint.updateLunchUser" : {
+      "path" : "lunchuser",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.models.LunchUserEndpoint.updateLunchUser",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "lunchuserendpoint.insertLunchUser" : {
+      "path" : "lunchuser",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.models.LunchUserEndpoint.insertLunchUser",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "CollectionResponse_LunchUser" : {
+        "id" : "CollectionResponse_LunchUser",
+        "type" : "object",
+        "properties" : {
+          "items" : {
+            "type" : "array",
+            "items" : {
+              "$ref" : "LunchUser"
+            }
+          },
+          "nextPageToken" : {
+            "type" : "string"
+          }
+        }
+      },
+      "LunchUser" : {
+        "id" : "LunchUser",
+        "type" : "object",
+        "properties" : {
+          "eduEmail" : {
+            "type" : "string"
+          },
+          "fbId" : {
+            "type" : "string"
+          },
+          "privateEmail" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "gender" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.lunchbuddy.models.LunchUserEndpoint.removeLunchUser" : {
+      },
+      "com.lunchbuddy.models.LunchUserEndpoint.listLunchUser" : {
+        "response" : {
+          "$ref" : "CollectionResponse_LunchUser"
+        }
+      },
+      "com.lunchbuddy.models.LunchUserEndpoint.getLunchUser" : {
+        "response" : {
+          "$ref" : "LunchUser"
+        }
+      },
+      "com.lunchbuddy.models.LunchUserEndpoint.updateLunchUser" : {
+        "request" : {
+          "$ref" : "LunchUser"
+        },
+        "response" : {
+          "$ref" : "LunchUser"
+        }
+      },
+      "com.lunchbuddy.models.LunchUserEndpoint.insertLunchUser" : {
+        "request" : {
+          "$ref" : "LunchUser"
+        },
+        "response" : {
+          "$ref" : "LunchUser"
+        }
+      }
+    }
+  }
+}

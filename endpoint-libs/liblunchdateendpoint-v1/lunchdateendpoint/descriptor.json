@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/lunchdateendpoint/v1/20140404033739/java/1.16.0-rc/lunchbuddy.com-lunchdateendpoint-v1-20140404033739-java-1.16.0-rc-sources.jar", 
-      "path": "lunchbuddy.com-lunchdateendpoint-v1-20140404033739-java-1.16.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/lunchdateendpoint/v1/20140404040044/java/1.16.0-rc/lunchbuddy.com-lunchdateendpoint-v1-20140404040044-java-1.16.0-rc-sources.jar", 
+      "path": "lunchbuddy.com-lunchdateendpoint-v1-20140404040044-java-1.16.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2014-04-04 03:37"
+      "timestamp": "2014-04-04 04:00"
     }, 
     {
-      "path": "lunchbuddy.com-lunchdateendpoint-v1-20140404033739-java-1.16.0-rc.jar.properties", 
+      "path": "lunchbuddy.com-lunchdateendpoint-v1-20140404040044-java-1.16.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -702,5 +702,5 @@
   "packagePath": "models", 
   "language_version": "1.16.0-rc", 
   "id": "lunchdateendpoint:v1", 
-  "revision": 20140404033739
+  "revision": 20140404040044
 }

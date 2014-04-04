@@ -21,7 +21,7 @@
     <servlet-class>com.google.api.server.spi.SystemServiceServlet</servlet-class>
     <init-param>
       <param-name>services</param-name>
-      <param-value>com.lunchbuddy.api.RequestController,com.lunchbuddy.models.LunchDateEndpoint,com.lunchbuddy.models.RequestEndpoint,com.lunchbuddy.models.UserEndpoint</param-value>
+      <param-value>com.lunchbuddy.api.RequestController,com.lunchbuddy.models.LunchDateEndpoint,com.lunchbuddy.models.LunchUserEndpoint,com.lunchbuddy.models.RequestEndpoint</param-value>
     </init-param>
   </servlet>
 

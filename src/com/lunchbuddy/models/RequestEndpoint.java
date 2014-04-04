@@ -37,7 +37,6 @@ public class RequestEndpoint {
 
 		PersistenceManager mgr = null;
 		Cursor cursor = null;
-		
 		List<Request> execute = null;
 
 		try {

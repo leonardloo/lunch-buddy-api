@@ -5,7 +5,7 @@
 <jdo>
     <package name="com.lunchbuddy.models">
         <class
-              name="User">
+              name="LunchUser">
             <field
                   name="eduEmail"
                   persistence-modifier="persistent"/>

@@ -19,8 +19,8 @@ import javax.persistence.EntityNotFoundException;
 import javax.jdo.PersistenceManager;
 import javax.jdo.Query;
 
-@Api(name = "userendpoint", namespace = @ApiNamespace(ownerDomain = "lunchbuddy.com", ownerName = "lunchbuddy.com", packagePath = "models"))
-public class UserEndpoint {
+@Api(name = "lunchuserendpoint", namespace = @ApiNamespace(ownerDomain = "lunchbuddy.com", ownerName = "lunchbuddy.com", packagePath = "models"))
+public class LunchUserEndpoint {
 
 	/**
 	 * This method lists all the entities inserted in datastore.
@@ -30,8 +30,8 @@ public class UserEndpoint {
 	 * persisted and a cursor to the next page.
 	 */
 	@SuppressWarnings({ "unchecked", "unused" })
-	@ApiMethod(name = "listUser")
-	public CollectionResponse<LunchUser> listUser(
+	@ApiMethod(name = "listLunchUser")
+	public CollectionResponse<LunchUser> listLunchUser(
 			@Nullable @Named("cursor") String cursorString,
 			@Nullable @Named("limit") Integer limit) {
 
@@ -76,16 +76,16 @@ public class UserEndpoint {
 	 * @param id the primary key of the java bean.
 	 * @return The entity with primary key id.
 	 */
-	@ApiMethod(name = "getUser")
-	public LunchUser getUser(@Named("id") String id) {
+	@ApiMethod(name = "getLunchUser")
+	public LunchUser getLunchUser(@Named("id") String id) {
 		PersistenceManager mgr = getPersistenceManager();
-		LunchUser user = null;
+		LunchUser lunchuser = null;
 		try {
-			user = mgr.getObjectById(LunchUser.class, id);
+			lunchuser = mgr.getObjectById(LunchUser.class, id);
 		} finally {
 			mgr.close();
 		}
-		return user;
+		return lunchuser;
 	}
 
 	/**
@@ -93,21 +93,21 @@ public class UserEndpoint {
 	 * exists in the datastore, an exception is thrown.
 	 * It uses HTTP POST method.
 	 *
-	 * @param user the entity to be inserted.
+	 * @param lunchuser the entity to be inserted.
 	 * @return The inserted entity.
 	 */
-	@ApiMethod(name = "insertUser")
-	public LunchUser insertUser(LunchUser user) {
+	@ApiMethod(name = "insertLunchUser")
+	public LunchUser insertLunchUser(LunchUser lunchuser) {
 		PersistenceManager mgr = getPersistenceManager();
 		try {
-			if (containsUser(user)) {
+			if (containsLunchUser(lunchuser)) {
 				throw new EntityExistsException("Object already exists");
 			}
-			mgr.makePersistent(user);
+			mgr.makePersistent(lunchuser);
 		} finally {
 			mgr.close();
 		}
-		return user;
+		return lunchuser;
 	}
 
 	/**
@@ -115,21 +115,21 @@ public class UserEndpoint {
 	 * exist in the datastore, an exception is thrown.
 	 * It uses HTTP PUT method.
 	 *
-	 * @param user the entity to be updated.
+	 * @param lunchuser the entity to be updated.
 	 * @return The updated entity.
 	 */
-	@ApiMethod(name = "updateUser")
-	public LunchUser updateUser(LunchUser user) {
+	@ApiMethod(name = "updateLunchUser")
+	public LunchUser updateLunchUser(LunchUser lunchuser) {
 		PersistenceManager mgr = getPersistenceManager();
 		try {
-			if (!containsUser(user)) {
+			if (!containsLunchUser(lunchuser)) {
 				throw new EntityNotFoundException("Object does not exist");
 			}
-			mgr.makePersistent(user);
+			mgr.makePersistent(lunchuser);
 		} finally {
 			mgr.close();
 		}
-		return user;
+		return lunchuser;
 	}
 
 	/**
@@ -138,22 +138,22 @@ public class UserEndpoint {
 	 *
 	 * @param id the primary key of the entity to be deleted.
 	 */
-	@ApiMethod(name = "removeUser")
-	public void removeUser(@Named("id") String id) {
+	@ApiMethod(name = "removeLunchUser")
+	public void removeLunchUser(@Named("id") String id) {
 		PersistenceManager mgr = getPersistenceManager();
 		try {
-			LunchUser user = mgr.getObjectById(LunchUser.class, id);
-			mgr.deletePersistent(user);
+			LunchUser lunchuser = mgr.getObjectById(LunchUser.class, id);
+			mgr.deletePersistent(lunchuser);
 		} finally {
 			mgr.close();
 		}
 	}
 
-	private boolean containsUser(LunchUser user) {
+	private boolean containsLunchUser(LunchUser lunchuser) {
 		PersistenceManager mgr = getPersistenceManager();
 		boolean contains = true;
 		try {
-			mgr.getObjectById(LunchUser.class, user.getEduEmail());
+			mgr.getObjectById(LunchUser.class, lunchuser.getEduEmail());
 		} catch (javax.jdo.JDOObjectNotFoundException ex) {
 			contains = false;
 		} finally {
