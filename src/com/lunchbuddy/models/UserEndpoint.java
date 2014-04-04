@@ -31,17 +31,17 @@ public class UserEndpoint {
 	 */
 	@SuppressWarnings({ "unchecked", "unused" })
 	@ApiMethod(name = "listUser")
-	public CollectionResponse<User> listUser(
+	public CollectionResponse<LunchUser> listUser(
 			@Nullable @Named("cursor") String cursorString,
 			@Nullable @Named("limit") Integer limit) {
 
 		PersistenceManager mgr = null;
 		Cursor cursor = null;
-		List<User> execute = null;
+		List<LunchUser> execute = null;
 
 		try {
 			mgr = getPersistenceManager();
-			Query query = mgr.newQuery(User.class);
+			Query query = mgr.newQuery(LunchUser.class);
 			if (cursorString != null && cursorString != "") {
 				cursor = Cursor.fromWebSafeString(cursorString);
 				HashMap<String, Object> extensionMap = new HashMap<String, Object>();
@@ -53,20 +53,20 @@ public class UserEndpoint {
 				query.setRange(0, limit);
 			}
 
-			execute = (List<User>) query.execute();
+			execute = (List<LunchUser>) query.execute();
 			cursor = JDOCursorHelper.getCursor(execute);
 			if (cursor != null)
 				cursorString = cursor.toWebSafeString();
 
 			// Tight loop for fetching all entities from datastore and accomodate
 			// for lazy fetch.
-			for (User obj : execute)
+			for (LunchUser obj : execute)
 				;
 		} finally {
 			mgr.close();
 		}
 
-		return CollectionResponse.<User> builder().setItems(execute)
+		return CollectionResponse.<LunchUser> builder().setItems(execute)
 				.setNextPageToken(cursorString).build();
 	}
 
@@ -77,11 +77,11 @@ public class UserEndpoint {
 	 * @return The entity with primary key id.
 	 */
 	@ApiMethod(name = "getUser")
-	public User getUser(@Named("id") String id) {
+	public LunchUser getUser(@Named("id") String id) {
 		PersistenceManager mgr = getPersistenceManager();
-		User user = null;
+		LunchUser user = null;
 		try {
-			user = mgr.getObjectById(User.class, id);
+			user = mgr.getObjectById(LunchUser.class, id);
 		} finally {
 			mgr.close();
 		}
@@ -97,7 +97,7 @@ public class UserEndpoint {
 	 * @return The inserted entity.
 	 */
 	@ApiMethod(name = "insertUser")
-	public User insertUser(User user) {
+	public LunchUser insertUser(LunchUser user) {
 		PersistenceManager mgr = getPersistenceManager();
 		try {
 			if (containsUser(user)) {
@@ -119,7 +119,7 @@ public class UserEndpoint {
 	 * @return The updated entity.
 	 */
 	@ApiMethod(name = "updateUser")
-	public User updateUser(User user) {
+	public LunchUser updateUser(LunchUser user) {
 		PersistenceManager mgr = getPersistenceManager();
 		try {
 			if (!containsUser(user)) {
@@ -142,18 +142,18 @@ public class UserEndpoint {
 	public void removeUser(@Named("id") String id) {
 		PersistenceManager mgr = getPersistenceManager();
 		try {
-			User user = mgr.getObjectById(User.class, id);
+			LunchUser user = mgr.getObjectById(LunchUser.class, id);
 			mgr.deletePersistent(user);
 		} finally {
 			mgr.close();
 		}
 	}
 
-	private boolean containsUser(User user) {
+	private boolean containsUser(LunchUser user) {
 		PersistenceManager mgr = getPersistenceManager();
 		boolean contains = true;
 		try {
-			mgr.getObjectById(User.class, user.getEduEmail());
+			mgr.getObjectById(LunchUser.class, user.getEduEmail());
 		} catch (javax.jdo.JDOObjectNotFoundException ex) {
 			contains = false;
 		} finally {

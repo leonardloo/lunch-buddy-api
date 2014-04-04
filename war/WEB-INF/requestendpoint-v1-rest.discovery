@@ -1,6 +1,6 @@
 {
  "kind": "discovery#restDescription",
- "etag": "\"gWnWV7fYC80JM0beuSxOtzgfiS0/QqMiSKiXrkO1Wcf30K36atAWpM4\"",
+ "etag": "\"gWnWV7fYC80JM0beuSxOtzgfiS0/ZCVREL7yH39uoDjJoQpGXAToh2k\"",
  "discoveryVersion": "v1",
  "id": "requestendpoint:v1",
  "name": "requestendpoint",
@@ -117,6 +117,27 @@
     }
    }
   },
+  "LunchUser": {
+   "id": "LunchUser",
+   "type": "object",
+   "properties": {
+    "eduEmail": {
+     "type": "string"
+    },
+    "fbId": {
+     "type": "string"
+    },
+    "gender": {
+     "type": "string"
+    },
+    "name": {
+     "type": "string"
+    },
+    "privateEmail": {
+     "type": "string"
+    }
+   }
+  },
   "Request": {
    "id": "Request",
    "type": "object",
@@ -142,7 +163,7 @@
      }
     },
     "user": {
-     "$ref": "User"
+     "$ref": "LunchUser"
     }
    }
   },
@@ -161,27 +182,6 @@
     "startTime": {
      "type": "string",
      "format": "date-time"
-    }
-   }
-  },
-  "User": {
-   "id": "User",
-   "type": "object",
-   "properties": {
-    "eduEmail": {
-     "type": "string"
-    },
-    "fbId": {
-     "type": "string"
-    },
-    "gender": {
-     "type": "string"
-    },
-    "name": {
-     "type": "string"
-    },
-    "privateEmail": {
-     "type": "string"
     }
    }
   }

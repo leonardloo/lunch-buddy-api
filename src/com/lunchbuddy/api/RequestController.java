@@ -18,19 +18,21 @@ import com.google.appengine.datanucleus.query.JDOCursorHelper;
 import com.lunchbuddy.models.LunchDate;
 import com.lunchbuddy.models.Request;
 
-@Api(name = "lunchbuddy", version = "v1")
+@Api(name = "requestcontroller", version = "v1", description = "endpoint for matching requests")
 public class RequestController {
 
+	
+	@ApiMethod(name = "findMatch", httpMethod = HttpMethod.GET)
 	public LunchDate matchRequest(Request req) {
 		LunchDate result = null;
-
 		// iterate over request pool and find best match
 		CollectionResponse<Request> listResp = listRequest("", null);
 		Collection<Request> requestPool = listResp.getItems();
 		result = MatchingAlgorithm.findMatch(req, requestPool);
-
 		return result;
 	}
+	
+	
 
 	@SuppressWarnings({ "unchecked", "unused" })
 	private CollectionResponse<Request> listRequest(

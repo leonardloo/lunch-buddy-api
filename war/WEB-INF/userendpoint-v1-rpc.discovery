@@ -1,6 +1,6 @@
 {
  "kind": "discovery#rpcDescription",
- "etag": "\"gWnWV7fYC80JM0beuSxOtzgfiS0/FUgAm0BYCk6s1yvsE6jb-_vpRfw\"",
+ "etag": "\"gWnWV7fYC80JM0beuSxOtzgfiS0/i7XHq5vNw8Djyb2y4hKjd0kdFhQ\"",
  "discoveryVersion": "v1",
  "id": "userendpoint:v1",
  "name": "userendpoint",
@@ -72,14 +72,14 @@
   }
  },
  "schemas": {
-  "CollectionResponse_User": {
-   "id": "CollectionResponse_User",
+  "CollectionResponse_LunchUser": {
+   "id": "CollectionResponse_LunchUser",
    "type": "object",
    "properties": {
     "items": {
      "type": "array",
      "items": {
-      "$ref": "User"
+      "$ref": "LunchUser"
      }
     },
     "nextPageToken": {
@@ -87,8 +87,8 @@
     }
    }
   },
-  "User": {
-   "id": "User",
+  "LunchUser": {
+   "id": "LunchUser",
    "type": "object",
    "properties": {
     "eduEmail": {
@@ -123,7 +123,7 @@
     "id"
    ],
    "returns": {
-    "$ref": "User"
+    "$ref": "LunchUser"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
@@ -133,14 +133,14 @@
    "id": "userendpoint.insertUser",
    "parameters": {
     "resource": {
-     "$ref": "User"
+     "$ref": "LunchUser"
     }
    },
    "parameterOrder": [
     "resource"
    ],
    "returns": {
-    "$ref": "User"
+    "$ref": "LunchUser"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
@@ -159,7 +159,7 @@
     }
    },
    "returns": {
-    "$ref": "CollectionResponse_User"
+    "$ref": "CollectionResponse_LunchUser"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"
@@ -184,14 +184,14 @@
    "id": "userendpoint.updateUser",
    "parameters": {
     "resource": {
-     "$ref": "User"
+     "$ref": "LunchUser"
     }
    },
    "parameterOrder": [
     "resource"
    ],
    "returns": {
-    "$ref": "User"
+    "$ref": "LunchUser"
    },
    "scopes": [
     "https://www.googleapis.com/auth/userinfo.email"

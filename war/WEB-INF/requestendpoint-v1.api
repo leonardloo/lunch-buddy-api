@@ -152,7 +152,7 @@
             "$ref" : "Key"
           },
           "user" : {
-            "$ref" : "User"
+            "$ref" : "LunchUser"
           },
           "interval" : {
             "$ref" : "TimeInterval"
@@ -199,8 +199,8 @@
           }
         }
       },
-      "User" : {
-        "id" : "User",
+      "LunchUser" : {
+        "id" : "LunchUser",
         "type" : "object",
         "properties" : {
           "eduEmail" : {

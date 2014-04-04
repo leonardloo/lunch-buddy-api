@@ -6,13 +6,13 @@ import javax.jdo.annotations.Persistent;
 import javax.jdo.annotations.PrimaryKey;
 
 @PersistenceCapable
-public class User {
+public class LunchUser {
 	@PrimaryKey
 	@Persistent(valueStrategy = IdGeneratorStrategy.IDENTITY)
 	private String eduEmail;
-	
+
 	@Persistent(defaultFetchGroup = "true")
-    private Request request;
+	private Request request;
 
 	@Persistent
 	private String fbId;
@@ -24,8 +24,9 @@ public class User {
 	@Persistent
 	private String gender;
 
-	public User(String eduEmail, String name, String fbId, String privateEmail, String gender){
-		if(eduEmail == null){
+	public LunchUser(String eduEmail, String name, String fbId, String privateEmail,
+			String gender) {
+		if (eduEmail == null) {
 			throw new IllegalArgumentException();
 		}
 		this.eduEmail = eduEmail;
@@ -34,8 +35,7 @@ public class User {
 		this.privateEmail = privateEmail;
 		this.gender = gender;
 	}
-	
-	
+
 	public String getFbId() {
 		return fbId;
 	}

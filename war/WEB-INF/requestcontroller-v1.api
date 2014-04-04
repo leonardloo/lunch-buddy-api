@@ -1,0 +1,275 @@
+{
+  "extends" : "thirdParty.api",
+  "abstract" : false,
+  "root" : "https://formal-cascade-539.appspot.com/_ah/api",
+  "name" : "requestcontroller",
+  "version" : "v1",
+  "description" : "endpoint for matching requests",
+  "defaultVersion" : false,
+  "adapter" : {
+    "bns" : "https://formal-cascade-539.appspot.com/_ah/spi",
+    "deadline" : 65.0,
+    "type" : "lily"
+  },
+  "auth" : {
+    "allowCookieAuth" : false
+  },
+  "frontendLimits" : {
+    "unregisteredUserQps" : -1,
+    "unregisteredQps" : -1,
+    "unregisteredDaily" : -1,
+    "rules" : [ ]
+  },
+  "cacheControl" : {
+    "type" : "no-cache",
+    "maxAge" : 0
+  },
+  "methods" : {
+    "requestcontroller.requestController.deleteRequest" : {
+      "path" : "request/{id}",
+      "httpMethod" : "DELETE",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.api.RequestController.deleteRequest",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "requestcontroller.findMatch" : {
+      "path" : "matchRequest",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.api.RequestController.matchRequest",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "requestcontroller.requestController.updateRequest" : {
+      "path" : "void/{id}",
+      "httpMethod" : "PUT",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.api.RequestController.updateRequest",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    },
+    "requestcontroller.requestController.createRequest" : {
+      "path" : "createRequest",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.api.RequestController.createRequest",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "requestcontroller.requestController.getRequest" : {
+      "path" : "void/{id}",
+      "httpMethod" : "GET",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.api.RequestController.getRequest",
+      "request" : {
+        "parameters" : {
+          "id" : {
+            "type" : "string",
+            "required" : true
+          }
+        },
+        "body" : "empty"
+      },
+      "response" : {
+        "body" : "empty"
+      }
+    }
+  },
+  "descriptor" : {
+    "schemas" : {
+      "Request" : {
+        "id" : "Request",
+        "type" : "object",
+        "properties" : {
+          "key" : {
+            "$ref" : "Key"
+          },
+          "user" : {
+            "$ref" : "LunchUser"
+          },
+          "interval" : {
+            "$ref" : "TimeInterval"
+          },
+          "restaurantPreferences" : {
+            "type" : "array",
+            "items" : {
+              "type" : "string"
+            }
+          },
+          "lat" : {
+            "type" : "number"
+          },
+          "lon" : {
+            "type" : "number"
+          }
+        }
+      },
+      "Key" : {
+        "id" : "Key",
+        "type" : "object",
+        "properties" : {
+          "kind" : {
+            "type" : "string"
+          },
+          "appId" : {
+            "type" : "string"
+          },
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "complete" : {
+            "type" : "boolean"
+          },
+          "parent" : {
+            "$ref" : "Key"
+          },
+          "namespace" : {
+            "type" : "string"
+          }
+        }
+      },
+      "LunchUser" : {
+        "id" : "LunchUser",
+        "type" : "object",
+        "properties" : {
+          "eduEmail" : {
+            "type" : "string"
+          },
+          "fbId" : {
+            "type" : "string"
+          },
+          "privateEmail" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "gender" : {
+            "type" : "string"
+          }
+        }
+      },
+      "TimeInterval" : {
+        "id" : "TimeInterval",
+        "type" : "object",
+        "properties" : {
+          "startTime" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "endTime" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "length" : {
+            "type" : "string",
+            "format" : "int64"
+          }
+        }
+      },
+      "LunchDate" : {
+        "id" : "LunchDate",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "requestA" : {
+            "$ref" : "Request"
+          },
+          "requestB" : {
+            "$ref" : "Request"
+          },
+          "restaurantId" : {
+            "type" : "string"
+          },
+          "matchedInterval" : {
+            "$ref" : "TimeInterval"
+          },
+          "expiryTime" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "confirmed" : {
+            "type" : "boolean"
+          }
+        }
+      }
+    },
+    "methods" : {
+      "com.lunchbuddy.api.RequestController.deleteRequest" : {
+      },
+      "com.lunchbuddy.api.RequestController.matchRequest" : {
+        "request" : {
+          "$ref" : "Request"
+        },
+        "response" : {
+          "$ref" : "LunchDate"
+        }
+      },
+      "com.lunchbuddy.api.RequestController.updateRequest" : {
+      },
+      "com.lunchbuddy.api.RequestController.createRequest" : {
+        "request" : {
+          "$ref" : "Request"
+        },
+        "response" : {
+          "$ref" : "Request"
+        }
+      },
+      "com.lunchbuddy.api.RequestController.getRequest" : {
+      }
+    }
+  }
+}

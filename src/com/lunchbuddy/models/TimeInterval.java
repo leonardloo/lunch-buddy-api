@@ -6,7 +6,6 @@ import java.util.Date;
 import javax.jdo.annotations.EmbeddedOnly;
 import javax.jdo.annotations.PersistenceCapable;
 
-
 @PersistenceCapable
 @EmbeddedOnly
 public class TimeInterval {
@@ -64,50 +63,40 @@ public class TimeInterval {
 		}
 		// this.endTime is after otherInterval.startTime
 		if (this.endTime.compareTo(otherInterval.getStartTime()) > 0) {
-			long overlap = Math.min(this.endTime.getTime() - otherInterval.getStartTime()
-					.getTime(), otherInterval.getLength());
+			long overlap = Math.min(this.endTime.getTime()
+					- otherInterval.getStartTime().getTime(),
+					otherInterval.getLength());
 			return overlap;
 		}
 		// otherInterval.endTime is after this.startTime
 		if (otherInterval.getEndTime().compareTo(this.endTime) > 0) {
-			long overlap = Math.min(otherInterval.getEndTime().getTime() - this.startTime
-					.getTime(), this.getLength());
+			long overlap = Math.min(otherInterval.getEndTime().getTime()
+					- this.startTime.getTime(), this.getLength());
 			return overlap;
 		}
 		return 0;
 	}
 
-	//overlap method returning a TimeInterval object
-	public TimeInterval overlapInterval(TimeInterval otherInterval){
-
+	// overlap method returning a TimeInterval object
+	public TimeInterval overlapInterval(TimeInterval otherInterval) {
 
 		Date currentStart, currentEnd;
 
-		if(this.startTime.compareTo(otherInterval.startTime) >=0 )
-		{
+		if (this.startTime.compareTo(otherInterval.startTime) >= 0) {
 			currentStart = this.startTime;
-		}
-		else
-		{
+		} else {
 			currentStart = otherInterval.startTime;
 		}
 
-		if(this.endTime.compareTo(otherInterval.endTime) <=0 )
-		{
+		if (this.endTime.compareTo(otherInterval.endTime) <= 0) {
 			currentEnd = this.endTime;
-		}
-		else
-		{
+		} else {
 			currentEnd = otherInterval.endTime;
 		}
 
-
-		if(currentStart.compareTo(currentEnd) < 0)
-		{
-			return new TimeInterval (currentStart, currentEnd);
-		}
-		else
-		{
+		if (currentStart.compareTo(currentEnd) < 0) {
+			return new TimeInterval(currentStart, currentEnd);
+		} else {
 			return null;
 		}
 	}

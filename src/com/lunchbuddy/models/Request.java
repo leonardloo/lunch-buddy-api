@@ -23,9 +23,7 @@ public class Request {
 	private Key key;
 
 	@Persistent(mappedBy = "request")
-	private User user;
-
-	
+	private LunchUser user;
 
 	@Persistent
 	// user selected time interval for lunch date request
@@ -43,7 +41,7 @@ public class Request {
 	private double lon;
 
 	// TODO: constructor with desired init parameters
-	public Request(Date startTime, Date endTime, User user, double lat,
+	public Request(Date startTime, Date endTime, LunchUser user, double lat,
 			double lon) {
 		TimeInterval t = new TimeInterval(startTime, endTime);
 		this.user = user;
@@ -62,11 +60,11 @@ public class Request {
 		this.key = key;
 	}
 
-	public User getUser() {
+	public LunchUser getUser() {
 		return user;
 	}
 
-	public void setUser(User user) {
+	public void setUser(LunchUser user) {
 		this.user = user;
 	}
 
