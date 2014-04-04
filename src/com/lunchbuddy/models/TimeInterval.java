@@ -3,6 +3,12 @@ package com.lunchbuddy.models;
 import java.util.Calendar;
 import java.util.Date;
 
+import javax.jdo.annotations.EmbeddedOnly;
+import javax.jdo.annotations.PersistenceCapable;
+
+
+@PersistenceCapable
+@EmbeddedOnly
 public class TimeInterval {
 
 	private Date startTime;

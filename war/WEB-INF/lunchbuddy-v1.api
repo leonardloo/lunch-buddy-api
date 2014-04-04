@@ -24,88 +24,8 @@
     "maxAge" : 0
   },
   "methods" : {
-    "lunchbuddy.users.update" : {
-      "path" : "users/update/{id}",
-      "httpMethod" : "PUT",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.lunchbuddy.api.UserController.updateUser",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
-    "lunchbuddy.users.create" : {
-      "path" : "users/create",
-      "httpMethod" : "POST",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.lunchbuddy.api.UserController.createUser",
-      "request" : {
-        "body" : "autoTemplate(backendRequest)",
-        "bodyName" : "resource"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "lunchbuddy.users.removeUser" : {
-      "path" : "users/delete/{id}",
-      "httpMethod" : "DELETE",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.lunchbuddy.api.UserController.deleteUser",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "empty"
-      }
-    },
-    "lunchbuddy.users.get" : {
-      "path" : "users/get/{id}",
-      "httpMethod" : "GET",
-      "authLevel" : "NONE",
-      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
-      "audiences" : [ ],
-      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
-      "rosyMethod" : "com.lunchbuddy.api.UserController.getUser",
-      "request" : {
-        "parameters" : {
-          "id" : {
-            "type" : "string",
-            "required" : true
-          }
-        },
-        "body" : "empty"
-      },
-      "response" : {
-        "body" : "autoTemplate(backendResponse)"
-      }
-    },
-    "lunchbuddy.requests.removeUser" : {
-      "path" : "requests/delete/{id}",
+    "lunchbuddy.requestController.deleteRequest" : {
+      "path" : "request/{id}",
       "httpMethod" : "DELETE",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
@@ -125,8 +45,24 @@
         "body" : "empty"
       }
     },
-    "lunchbuddy.requests.update" : {
-      "path" : "requests/update/{id}",
+    "lunchbuddy.requestController.matchRequest" : {
+      "path" : "matchRequest",
+      "httpMethod" : "POST",
+      "authLevel" : "NONE",
+      "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
+      "audiences" : [ ],
+      "clientIds" : [ "292824132082.apps.googleusercontent.com" ],
+      "rosyMethod" : "com.lunchbuddy.api.RequestController.matchRequest",
+      "request" : {
+        "body" : "autoTemplate(backendRequest)",
+        "bodyName" : "resource"
+      },
+      "response" : {
+        "body" : "autoTemplate(backendResponse)"
+      }
+    },
+    "lunchbuddy.requestController.updateRequest" : {
+      "path" : "void/{id}",
       "httpMethod" : "PUT",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
@@ -146,8 +82,8 @@
         "body" : "empty"
       }
     },
-    "lunchbuddy.requests.create" : {
-      "path" : "requests/create",
+    "lunchbuddy.requestController.createRequest" : {
+      "path" : "createRequest",
       "httpMethod" : "POST",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
@@ -162,8 +98,8 @@
         "body" : "autoTemplate(backendResponse)"
       }
     },
-    "lunchbuddy.requests.get" : {
-      "path" : "requests/get/{id}",
+    "lunchbuddy.requestController.getRequest" : {
+      "path" : "void/{id}",
       "httpMethod" : "GET",
       "authLevel" : "NONE",
       "scopes" : [ "https://www.googleapis.com/auth/userinfo.email" ],
@@ -186,27 +122,6 @@
   },
   "descriptor" : {
     "schemas" : {
-      "User" : {
-        "id" : "User",
-        "type" : "object",
-        "properties" : {
-          "eduEmail" : {
-            "type" : "string"
-          },
-          "fbId" : {
-            "type" : "string"
-          },
-          "privateEmail" : {
-            "type" : "string"
-          },
-          "name" : {
-            "type" : "string"
-          },
-          "gender" : {
-            "type" : "string"
-          }
-        }
-      },
       "Request" : {
         "id" : "Request",
         "type" : "object",
@@ -262,6 +177,27 @@
           }
         }
       },
+      "User" : {
+        "id" : "User",
+        "type" : "object",
+        "properties" : {
+          "eduEmail" : {
+            "type" : "string"
+          },
+          "fbId" : {
+            "type" : "string"
+          },
+          "privateEmail" : {
+            "type" : "string"
+          },
+          "name" : {
+            "type" : "string"
+          },
+          "gender" : {
+            "type" : "string"
+          }
+        }
+      },
       "TimeInterval" : {
         "id" : "TimeInterval",
         "type" : "object",
@@ -279,30 +215,47 @@
             "format" : "int64"
           }
         }
+      },
+      "LunchDate" : {
+        "id" : "LunchDate",
+        "type" : "object",
+        "properties" : {
+          "id" : {
+            "type" : "string",
+            "format" : "int64"
+          },
+          "requestA" : {
+            "$ref" : "Request"
+          },
+          "requestB" : {
+            "$ref" : "Request"
+          },
+          "restaurantId" : {
+            "type" : "string"
+          },
+          "matchedInterval" : {
+            "$ref" : "TimeInterval"
+          },
+          "expiryTime" : {
+            "type" : "string",
+            "format" : "date-time"
+          },
+          "confirmed" : {
+            "type" : "boolean"
+          }
+        }
       }
     },
     "methods" : {
-      "com.lunchbuddy.api.UserController.updateUser" : {
-        "request" : {
-          "$ref" : "User"
-        }
+      "com.lunchbuddy.api.RequestController.deleteRequest" : {
       },
-      "com.lunchbuddy.api.UserController.createUser" : {
+      "com.lunchbuddy.api.RequestController.matchRequest" : {
         "request" : {
-          "$ref" : "User"
+          "$ref" : "Request"
         },
         "response" : {
-          "$ref" : "User"
+          "$ref" : "LunchDate"
         }
-      },
-      "com.lunchbuddy.api.UserController.deleteUser" : {
-      },
-      "com.lunchbuddy.api.UserController.getUser" : {
-        "response" : {
-          "$ref" : "User"
-        }
-      },
-      "com.lunchbuddy.api.RequestController.deleteRequest" : {
       },
       "com.lunchbuddy.api.RequestController.updateRequest" : {
       },
