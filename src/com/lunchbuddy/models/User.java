@@ -24,6 +24,18 @@ public class User {
 	@Persistent
 	private String gender;
 
+	public User(String eduEmail, String name, String fbId, String privateEmail, String gender){
+		if(eduEmail == null){
+			throw new IllegalArgumentException();
+		}
+		this.eduEmail = eduEmail;
+		this.name = name;
+		this.fbId = fbId;
+		this.privateEmail = privateEmail;
+		this.gender = gender;
+	}
+	
+	
 	public String getFbId() {
 		return fbId;
 	}
