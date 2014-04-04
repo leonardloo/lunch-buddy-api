@@ -8,8 +8,8 @@
 
   <groupId>com.google.apis</groupId>
   <artifactId>google-api-services-lunchdateendpoint</artifactId>
-  <version>v1-rev20140404045827-1.16.0-rc</version>
-  <name>lunchdateendpoint v1 (revision 20140404045827)</name>
+  <version>v1-rev20140404050910-1.16.0-rc</version>
+  <name>lunchdateendpoint v1 (revision 20140404050910)</name>
   <packaging>jar</packaging>
 
   <inceptionYear>2011</inceptionYear>

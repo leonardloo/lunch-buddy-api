@@ -1,13 +1,13 @@
 {
   "files": [
     {
-      "downloadUrl": "/downloads/lunchuserendpoint/v1/20140404045821/java/1.16.0-rc/lunchbuddy.com-lunchuserendpoint-v1-20140404045821-java-1.16.0-rc-sources.jar", 
-      "path": "lunchbuddy.com-lunchuserendpoint-v1-20140404045821-java-1.16.0-rc-sources.jar", 
+      "downloadUrl": "/downloads/lunchuserendpoint/v1/20140404050902/java/1.16.0-rc/lunchbuddy.com-lunchuserendpoint-v1-20140404050902-java-1.16.0-rc-sources.jar", 
+      "path": "lunchbuddy.com-lunchuserendpoint-v1-20140404050902-java-1.16.0-rc-sources.jar", 
       "type": "source", 
-      "timestamp": "2014-04-04 04:58"
+      "timestamp": "2014-04-04 05:09"
     }, 
     {
-      "path": "lunchbuddy.com-lunchuserendpoint-v1-20140404045821-java-1.16.0-rc.jar.properties", 
+      "path": "lunchbuddy.com-lunchuserendpoint-v1-20140404050902-java-1.16.0-rc.jar.properties", 
       "type": "android.properties"
     }
   ], 
@@ -702,5 +702,5 @@
   "packagePath": "models", 
   "language_version": "1.16.0-rc", 
   "id": "lunchuserendpoint:v1", 
-  "revision": 20140404045821
+  "revision": 20140404050902
 }
